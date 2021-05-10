@@ -1,0 +1,6 @@
+framework module DugongFloatingTab {
+  umbrella header "DugongFloatingTab-umbrella.h"
+
+  export *
+  module * { export * }
+}

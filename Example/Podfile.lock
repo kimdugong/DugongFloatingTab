@@ -1,0 +1,16 @@
+PODS:
+  - DugongFloatingTab (0.1.0)
+
+DEPENDENCIES:
+  - DugongFloatingTab (from `../`)
+
+EXTERNAL SOURCES:
+  DugongFloatingTab:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DugongFloatingTab: 439e6ce54a23f84ce84dd0b1b0241e84ce99b4d7
+
+PODFILE CHECKSUM: 9376588737a2d5b85b1a9c09da7cfa08e21e9277
+
+COCOAPODS: 1.10.1

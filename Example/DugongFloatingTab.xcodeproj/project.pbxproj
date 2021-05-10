@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42E047F12648D05C00EAEBA7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047F02648D05C00EAEBA7 /* PageViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		24A5D7C6F2793D5EB7B0270A /* Pods_DugongFloatingTab_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DugongFloatingTab_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42E047F02648D05C00EAEBA7 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* DugongFloatingTab_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DugongFloatingTab_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,14 +41,14 @@
 		607FACE51AFB9204008FA782 /* DugongFloatingTab_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DugongFloatingTab_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		81DF649DC4D3FB9EDC6BBD2E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		A8F9521ED393CB3A629E4562 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		81DF649DC4D3FB9EDC6BBD2E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		A8F9521ED393CB3A629E4562 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BF298BCAD5A2FE20996C10D5 /* Pods-DugongFloatingTab_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DugongFloatingTab_Tests.release.xcconfig"; path = "Target Support Files/Pods-DugongFloatingTab_Tests/Pods-DugongFloatingTab_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EDE4576873FDAEA059F0C64B /* Pods-DugongFloatingTab_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DugongFloatingTab_Example.release.xcconfig"; path = "Target Support Files/Pods-DugongFloatingTab_Example/Pods-DugongFloatingTab_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F191200CA3710A74486E9DD2 /* Pods-DugongFloatingTab_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DugongFloatingTab_Example.debug.xcconfig"; path = "Target Support Files/Pods-DugongFloatingTab_Example/Pods-DugongFloatingTab_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FD64E7B2D90498E2EBBBC92A /* Pods_DugongFloatingTab_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DugongFloatingTab_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDF5610540CC66BFD8EDDB1 /* Pods-DugongFloatingTab_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DugongFloatingTab_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DugongFloatingTab_Tests/Pods-DugongFloatingTab_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		FFBE6437EC09E73485B31D26 /* DugongFloatingTab.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = DugongFloatingTab.podspec; path = ../DugongFloatingTab.podspec; sourceTree = "<group>"; };
+		FFBE6437EC09E73485B31D26 /* DugongFloatingTab.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DugongFloatingTab.podspec; path = ../DugongFloatingTab.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				42E047F02648D05C00EAEBA7 /* PageViewController.swift */,
 			);
 			name = "Example for DugongFloatingTab";
 			path = DugongFloatingTab;
@@ -156,7 +159,6 @@
 				FDDF5610540CC66BFD8EDDB1 /* Pods-DugongFloatingTab_Tests.debug.xcconfig */,
 				BF298BCAD5A2FE20996C10D5 /* Pods-DugongFloatingTab_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -213,10 +215,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = XNB68CC222;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = XNB68CC222;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -227,6 +231,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -331,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E047F12648D05C00EAEBA7 /* PageViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
@@ -478,6 +484,7 @@
 			baseConfigurationReference = F191200CA3710A74486E9DD2 /* Pods-DugongFloatingTab_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XNB68CC222;
 				INFOPLIST_FILE = DugongFloatingTab/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -493,6 +500,7 @@
 			baseConfigurationReference = EDE4576873FDAEA059F0C64B /* Pods-DugongFloatingTab_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XNB68CC222;
 				INFOPLIST_FILE = DugongFloatingTab/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -507,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FDDF5610540CC66BFD8EDDB1 /* Pods-DugongFloatingTab_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = XNB68CC222;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -529,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF298BCAD5A2FE20996C10D5 /* Pods-DugongFloatingTab_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = XNB68CC222;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

@@ -1,0 +1,6 @@
+framework module Pods_DugongFloatingTab_Example {
+  umbrella header "Pods-DugongFloatingTab_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

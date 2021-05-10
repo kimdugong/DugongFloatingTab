@@ -7,18 +7,47 @@
 //
 
 import UIKit
+import DugongFloatingTab
 
 class ViewController: UIViewController {
+    @IBOutlet weak var container: UIView!
+    
+    private let headerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemOrange
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var stickyHeaderView : DugongFloatingTabViewController = {
+        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 50)
+        option.contentViewBackgroundColor = .yellow
+        option.selectedMenuTabItemUnderlineHeight = 2.5
+        option.selectedMenuTabItemUnderlineColor = .black
+        option.menuTabBackgroundColor = .systemTeal
+        option.menuTabItemBackgroundColor = .white
+
+        option.menuTabItemLabelFont = UIFont.boldSystemFont(ofSize: 20)
+        option.menuTabItemLabelTextColor = .black
+        option.menuTabItemEdgeInsetForSection = UIEdgeInsets(top: 0.0, left: 32.0, bottom: 0.0, right: 16.0)
+        option.minimumLineSpacing = 10
+
+        let stickyHeaderView = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
+        return stickyHeaderView
+    }()
+
+    private let pages: [DugongFloatingTabPageDelegate] = {
+        let tabTitle: [String] = ["낙타", "추천", "커피", "에이드", "디저트", "스위트", "잡다용품", "기타쩌리"]
+        let pages = tabTitle.enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
+            guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
+            child.pageIndex = index
+            child.title = title
+            return child
+        }
+        return pages
+    }()
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        container.addSubview(stickyHeaderView.view)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
-
