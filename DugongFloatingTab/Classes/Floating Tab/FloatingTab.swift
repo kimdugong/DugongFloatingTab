@@ -27,7 +27,7 @@ public class FloatingTab: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
         if #available(iOS 10.0, *) {
-            layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         } else {
             // Fallback on earlier versions
         }

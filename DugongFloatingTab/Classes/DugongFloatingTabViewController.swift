@@ -63,8 +63,8 @@ public class DugongFloatingTabViewController: UIViewController {
             ])
         }
 
-        addChildViewController(pageView)
-        pageView.didMove(toParentViewController: self)
+        addChild(pageView)
+        pageView.didMove(toParent: self)
         NSLayoutConstraint.activate([
             pageView.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             pageView.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

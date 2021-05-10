@@ -88,3 +88,9 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
     }
 
 }
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [String: Any]?) -> [UIPageViewController.OptionsKey: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
+}
