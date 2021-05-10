@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'DugongFloatingTab_Example' do
+  pod 'DugongFloatingTab', :path => '../'
+
+  target 'DugongFloatingTab_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
