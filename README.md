@@ -22,7 +22,7 @@ pod 'DugongFloatingTab'
 
 ## Author
 
-kimdugong, dugong@kggroup.co.kr
+kimdugong, js0628@ymail.com
 
 ## License
 
