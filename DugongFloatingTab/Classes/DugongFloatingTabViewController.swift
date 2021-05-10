@@ -124,16 +124,16 @@ extension DugongFloatingTabViewController: DugongFloatingTabPageScrollDelegate {
 }
 
 extension DugongFloatingTabViewController: DugongFloatingTabPageViewControllerDelegate {
-    public func pageIndexWillChange(index: Int) {
+    func pageIndexWillChange(index: Int) {
         stickyHeaderView.moveSelectedUnderlineView(index: index)
     }
     
-    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         pageViewController.viewControllers?.compactMap({ $0 as? DugongFloatingTabPageDelegate })
             .forEach({ $0.delegate = self })
     }
     
-    public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         pendingViewControllers
             .compactMap({ $0 as? DugongFloatingTabPageDelegate })
             .forEach({ $0.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0) })

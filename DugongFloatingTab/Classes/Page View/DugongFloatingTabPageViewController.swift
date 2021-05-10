@@ -8,14 +8,15 @@
 import UIKit
 
 class DugongFloatingTabPageViewController: UIPageViewController {
-    var pages: [UIViewController]
-    let option: DugongFloatingTabConfiguration
+    private let pages: [UIViewController]
+    private let option: DugongFloatingTabConfiguration
 
     var visiablePageIndex: Int = 0 {
         willSet {
             pageViewDelegate?.pageIndexWillChange(index: newValue)
         }
     }
+    
     weak var pageViewDelegate: DugongFloatingTabPageViewControllerDelegate?
 
     init(pages: [DugongFloatingTabPageDelegate], option: DugongFloatingTabConfiguration) {

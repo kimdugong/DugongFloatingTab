@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DugongFloatingTab: UIView {
+class DugongFloatingTab: UIView {
     private let option: DugongFloatingTabConfiguration
 
     private var headerView: UIView = {
@@ -45,7 +45,7 @@ public class DugongFloatingTab: UIView {
         return collectionView
     }()
 
-    public init(view: UIView, option: DugongFloatingTabConfiguration) {
+    init(view: UIView, option: DugongFloatingTabConfiguration) {
         self.option = option
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ public class DugongFloatingTab: UIView {
         self.addSubview(selectedUnderlineView)
     }
 
-    public override func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? DugongFloatingTabCollectionViewItem else {
             return

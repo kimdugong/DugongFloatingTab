@@ -175,9 +175,9 @@
 		60B118B7CE3D344C61C922BA0CFE5C13 /* DugongFloatingTab */ = {
 			isa = PBXGroup;
 			children = (
-				42E047E92648CDB400EAEBA7 /* Floating Tab */,
 				42E047E02648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift */,
 				42E047E52648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift */,
+				42E047E92648CDB400EAEBA7 /* Floating Tab */,
 				42E047E22648CADA00EAEBA7 /* Page View */,
 				BC25025159F285D1878E0E722E7C852F /* Pod */,
 				3E9BA5F91ED9EE206CD0AEC2590A1012 /* Support Files */,

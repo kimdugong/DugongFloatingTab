@@ -17,7 +17,7 @@ public protocol DugongFloatingTabPageDelegate: UIViewController {
     var delegate: DugongFloatingTabPageScrollDelegate? { get set }
 }
 
-public protocol DugongFloatingTabPageViewControllerDelegate: AnyObject {
+protocol DugongFloatingTabPageViewControllerDelegate: AnyObject {
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
     func pageIndexWillChange(index: Int)
