@@ -1,5 +1,5 @@
 //
-//  FloatingTab.swift
+//  DugongFloatingTab.swift
 //  DugongFloatingTab
 //
 //  Created by Dugong on 2021/05/10.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class FloatingTab: UIView {
+public class DugongFloatingTab: UIView {
     private let option: DugongFloatingTabConfiguration
 
     private var headerView: UIView = {
@@ -23,7 +23,7 @@ public class FloatingTab: UIView {
     }()
 
     lazy var menu: UICollectionView = {
-        let layout = FloatingTabCollectionViewFlowLayout()
+        let layout = DugongFloatingTabCollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
         if #available(iOS 10.0, *) {
@@ -32,8 +32,8 @@ public class FloatingTab: UIView {
             // Fallback on earlier versions
         }
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(FloatingTabCollectionViewItem.self,
-                                forCellWithReuseIdentifier: FloatingTabCollectionViewItem.identifier)
+        collectionView.register(DugongFloatingTabCollectionViewItem.self,
+                                forCellWithReuseIdentifier: DugongFloatingTabCollectionViewItem.identifier)
         collectionView.backgroundColor = option.menuTabBackgroundColor
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .automatic
@@ -80,7 +80,7 @@ public class FloatingTab: UIView {
 
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
-        guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? FloatingTabCollectionViewItem else {
+        guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? DugongFloatingTabCollectionViewItem else {
             return
         }
         NSLayoutConstraint.activate([
@@ -93,7 +93,7 @@ public class FloatingTab: UIView {
 
     func moveSelectedUnderlineView(index: Int, animated: Bool = true) {
         let indexPath = IndexPath(item: index, section: 0)
-        guard let cell = menu.cellForItem(at: indexPath) as? FloatingTabCollectionViewItem else {
+        guard let cell = menu.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
             return
         }
         menu.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)

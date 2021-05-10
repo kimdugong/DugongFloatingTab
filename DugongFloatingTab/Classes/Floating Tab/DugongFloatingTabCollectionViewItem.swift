@@ -1,5 +1,5 @@
 //
-//  FloatingTabCollectionViewItem.swift
+//  DugongFloatingTabCollectionViewItem.swift
 //  DugongFloatingTab
 //
 //  Created by Dugong on 2021/05/10.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FloatingTabCollectionViewItem: UICollectionViewCell {
-    static let identifier = "StickyMenuCollectionViewCell"
+class DugongFloatingTabCollectionViewItem: UICollectionViewCell {
+    static let identifier = "DugongFloatingTabCollectionViewItem"
 
     private var titleLabel: UILabel = {
         let label = UILabel()

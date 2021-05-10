@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }()
 
     private lazy var stickyHeaderView : DugongFloatingTabViewController = {
-        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 50)
+        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 50, menuTabHeight: 50)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
         option.selectedMenuTabItemUnderlineColor = .black
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
         option.menuTabItemLabelFont = UIFont.boldSystemFont(ofSize: 20)
         option.menuTabItemLabelTextColor = .black
-        option.menuTabItemEdgeInsetForSection = UIEdgeInsets(top: 0.0, left: 32.0, bottom: 0.0, right: 16.0)
+        option.menuTabItemEdgeInsetForSection = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
         option.minimumLineSpacing = 10
 
         let stickyHeaderView = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)

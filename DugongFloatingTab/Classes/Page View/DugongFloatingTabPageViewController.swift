@@ -1,5 +1,5 @@
 //
-//  FloatingTabPageViewController.swift
+//  DugongFloatingTabPageViewController.swift
 //  DugongFloatingTab
 //
 //  Created by Dugong on 2021/05/10.
@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol PageViewControllerDelegate: AnyObject {
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
-    func pageIndexWillChange(index: Int)
-}
-
-class PageViewController: UIPageViewController {
+class DugongFloatingTabPageViewController: UIPageViewController {
     var pages: [UIViewController]
     let option: DugongFloatingTabConfiguration
 
@@ -22,7 +16,7 @@ class PageViewController: UIPageViewController {
             pageViewDelegate?.pageIndexWillChange(index: newValue)
         }
     }
-    weak var pageViewDelegate: PageViewControllerDelegate?
+    weak var pageViewDelegate: DugongFloatingTabPageViewControllerDelegate?
 
     init(pages: [DugongFloatingTabPageDelegate], option: DugongFloatingTabConfiguration) {
         self.pages = pages
@@ -45,18 +39,18 @@ class PageViewController: UIPageViewController {
     }
 
     func pagingTo(toIndex index: Int, navigationDirection direction: UIPageViewController.NavigationDirection, headerViewHeight: CGFloat) {
-        self.setViewControllers([pages[index]], direction: direction, animated: true, completion: nil)
-        guard let childVC = pages[index] as? DugongFloatingTabPageDelegate else { return }
-        childVC.delegate = self.parent as? DugongFloatingTabPageScrollDelegate
-        if childVC.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + headerViewHeight <= (option.headerMaxHeight + option.menuTabHeight) {
-            childVC.stickyHeaderChildScrollView?.contentOffset.y = -headerViewHeight
-            childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+        self.setViewControllers([pages[index]], direction: direction, animated: true) { [self]_ in
+            guard let childVC = pages[index] as? DugongFloatingTabPageDelegate else { return }
+            childVC.delegate = self.parent as? DugongFloatingTabPageScrollDelegate
+            if childVC.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + headerViewHeight <= (option.headerMaxHeight + option.menuTabHeight) {
+                childVC.stickyHeaderChildScrollView?.contentOffset.y = -headerViewHeight
+                childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+            }
         }
     }
-
 }
 
-extension PageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+extension DugongFloatingTabPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
@@ -91,6 +85,6 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [String: Any]?) -> [UIPageViewController.OptionsKey: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
+    guard let input = input else { return nil }
+    return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
 }

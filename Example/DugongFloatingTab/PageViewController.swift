@@ -31,7 +31,7 @@ class PageViewController: UIViewController, DugongFloatingTabPageDelegate{
 
 extension PageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return 30
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,7 +40,7 @@ extension PageViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    // delegate me for sticky header view
+    // delegate me for floating tab
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.childViewScrollViewDidScroll(scrollView)
     }

@@ -12,12 +12,12 @@
 		1E52AB83773B6E7632DDD99D6F4C5AB4 /* DugongFloatingTab-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3A88D6E9A509A66B50E6C53AB214C /* DugongFloatingTab-dummy.m */; };
 		3AC8F0C36139FCFD255DE86AAF580E60 /* Pods-DugongFloatingTab_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A98BE163639783D9BAEFEB41C95756F1 /* Pods-DugongFloatingTab_Example-dummy.m */; };
 		42E047E12648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E02648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift */; };
-		42E047E42648CB4000EAEBA7 /* FloatingTabPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E32648CB4000EAEBA7 /* FloatingTabPageDelegate.swift */; };
+		42E047E42648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E32648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift */; };
 		42E047E62648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E52648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift */; };
-		42E047E82648CC9000EAEBA7 /* FloatingTabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E72648CC9000EAEBA7 /* FloatingTabPageViewController.swift */; };
-		42E047EB2648CDDC00EAEBA7 /* FloatingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047EA2648CDDC00EAEBA7 /* FloatingTab.swift */; };
-		42E047ED2648CE1D00EAEBA7 /* FloatingTabCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047EC2648CE1D00EAEBA7 /* FloatingTabCollectionViewFlowLayout.swift */; };
-		42E047EF2648CE4600EAEBA7 /* FloatingTabCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047EE2648CE4600EAEBA7 /* FloatingTabCollectionViewItem.swift */; };
+		42E047E82648CC9000EAEBA7 /* DugongFloatingTabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E72648CC9000EAEBA7 /* DugongFloatingTabPageViewController.swift */; };
+		42E047EB2648CDDC00EAEBA7 /* DugongFloatingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047EA2648CDDC00EAEBA7 /* DugongFloatingTab.swift */; };
+		42E047ED2648CE1D00EAEBA7 /* DugongFloatingTabCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047EC2648CE1D00EAEBA7 /* DugongFloatingTabCollectionViewFlowLayout.swift */; };
+		42E047EF2648CE4600EAEBA7 /* DugongFloatingTabCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047EE2648CE4600EAEBA7 /* DugongFloatingTabCollectionViewItem.swift */; };
 		7606ABAC756262DBC1C2CFBF4942ADF2 /* Pods-DugongFloatingTab_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F58135A138E2A1038609C547DC9ECC9 /* Pods-DugongFloatingTab_Tests-dummy.m */; };
 		78784772C0B03580C0CD7A32C3395B4F /* Pods-DugongFloatingTab_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 506B6151D71D4130D3487D02713D5FA5 /* Pods-DugongFloatingTab_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8F906AFE56454BC0C02303C43AE7A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -53,12 +53,12 @@
 		2D300D57C5C60EC6BE27B02E5D8ACA62 /* Pods_DugongFloatingTab_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DugongFloatingTab_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F74E092B9D779EAD47682CE0872B03 /* Pods-DugongFloatingTab_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DugongFloatingTab_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		42E047E02648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DugongFloatingTabViewController.swift; path = DugongFloatingTab/Classes/DugongFloatingTabViewController.swift; sourceTree = "<group>"; };
-		42E047E32648CB4000EAEBA7 /* FloatingTabPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabPageDelegate.swift; sourceTree = "<group>"; };
+		42E047E32648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DugongFloatingTabPageDelegate.swift; sourceTree = "<group>"; };
 		42E047E52648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DugongFloatingTabConfiguration.swift; path = DugongFloatingTab/Classes/DugongFloatingTabConfiguration.swift; sourceTree = "<group>"; };
-		42E047E72648CC9000EAEBA7 /* FloatingTabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabPageViewController.swift; sourceTree = "<group>"; };
-		42E047EA2648CDDC00EAEBA7 /* FloatingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTab.swift; sourceTree = "<group>"; };
-		42E047EC2648CE1D00EAEBA7 /* FloatingTabCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		42E047EE2648CE4600EAEBA7 /* FloatingTabCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabCollectionViewItem.swift; sourceTree = "<group>"; };
+		42E047E72648CC9000EAEBA7 /* DugongFloatingTabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DugongFloatingTabPageViewController.swift; sourceTree = "<group>"; };
+		42E047EA2648CDDC00EAEBA7 /* DugongFloatingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DugongFloatingTab.swift; sourceTree = "<group>"; };
+		42E047EC2648CE1D00EAEBA7 /* DugongFloatingTabCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DugongFloatingTabCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		42E047EE2648CE4600EAEBA7 /* DugongFloatingTabCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DugongFloatingTabCollectionViewItem.swift; sourceTree = "<group>"; };
 		483F4E09E73B28E8573581230B20FC3F /* Pods-DugongFloatingTab_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DugongFloatingTab_Tests.modulemap"; sourceTree = "<group>"; };
 		4BA0C20789081FBE93035542EFF6E17F /* Pods-DugongFloatingTab_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DugongFloatingTab_Example.modulemap"; sourceTree = "<group>"; };
 		4F58135A138E2A1038609C547DC9ECC9 /* Pods-DugongFloatingTab_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DugongFloatingTab_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -146,8 +146,8 @@
 		42E047E22648CADA00EAEBA7 /* Page View */ = {
 			isa = PBXGroup;
 			children = (
-				42E047E32648CB4000EAEBA7 /* FloatingTabPageDelegate.swift */,
-				42E047E72648CC9000EAEBA7 /* FloatingTabPageViewController.swift */,
+				42E047E32648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift */,
+				42E047E72648CC9000EAEBA7 /* DugongFloatingTabPageViewController.swift */,
 			);
 			name = "Page View";
 			path = "DugongFloatingTab/Classes/Page View";
@@ -156,9 +156,9 @@
 		42E047E92648CDB400EAEBA7 /* Floating Tab */ = {
 			isa = PBXGroup;
 			children = (
-				42E047EA2648CDDC00EAEBA7 /* FloatingTab.swift */,
-				42E047EC2648CE1D00EAEBA7 /* FloatingTabCollectionViewFlowLayout.swift */,
-				42E047EE2648CE4600EAEBA7 /* FloatingTabCollectionViewItem.swift */,
+				42E047EA2648CDDC00EAEBA7 /* DugongFloatingTab.swift */,
+				42E047EC2648CE1D00EAEBA7 /* DugongFloatingTabCollectionViewFlowLayout.swift */,
+				42E047EE2648CE4600EAEBA7 /* DugongFloatingTabCollectionViewItem.swift */,
 			);
 			name = "Floating Tab";
 			path = "DugongFloatingTab/Classes/Floating Tab";
@@ -419,11 +419,11 @@
 				42E047E62648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift in Sources */,
 				42E047E12648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift in Sources */,
 				1E52AB83773B6E7632DDD99D6F4C5AB4 /* DugongFloatingTab-dummy.m in Sources */,
-				42E047E82648CC9000EAEBA7 /* FloatingTabPageViewController.swift in Sources */,
-				42E047ED2648CE1D00EAEBA7 /* FloatingTabCollectionViewFlowLayout.swift in Sources */,
-				42E047EF2648CE4600EAEBA7 /* FloatingTabCollectionViewItem.swift in Sources */,
-				42E047EB2648CDDC00EAEBA7 /* FloatingTab.swift in Sources */,
-				42E047E42648CB4000EAEBA7 /* FloatingTabPageDelegate.swift in Sources */,
+				42E047E82648CC9000EAEBA7 /* DugongFloatingTabPageViewController.swift in Sources */,
+				42E047ED2648CE1D00EAEBA7 /* DugongFloatingTabCollectionViewFlowLayout.swift in Sources */,
+				42E047EF2648CE4600EAEBA7 /* DugongFloatingTabCollectionViewItem.swift in Sources */,
+				42E047EB2648CDDC00EAEBA7 /* DugongFloatingTab.swift in Sources */,
+				42E047E42648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
