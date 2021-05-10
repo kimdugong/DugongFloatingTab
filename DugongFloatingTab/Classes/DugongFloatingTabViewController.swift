@@ -11,7 +11,12 @@ public class DugongFloatingTabViewController: UIViewController {
     private var headerView: UIView
     private var pages: [DugongFloatingTabPageDelegate]
     private var option: DugongFloatingTabConfiguration
-    
+
+    /// DugongFloatingTabViewController's initializing
+    /// - Parameters:
+    ///   - pages: Array of VC conformming to DugongFloatingTabPageDelegate protocol
+    ///   - headerView: Size-changing top view
+    ///   - option: Configuration class including interface option
     public init(pages: [DugongFloatingTabPageDelegate], headerView: UIView, option: DugongFloatingTabConfiguration) {
         self.pages = pages
         self.headerView = headerView
@@ -34,7 +39,7 @@ public class DugongFloatingTabViewController: UIViewController {
         return view
     }()
     
-    public lazy var stickyHeaderView = DugongFloatingTab(view: headerView, option: option)
+    private lazy var stickyHeaderView = DugongFloatingTab(view: headerView, option: option)
     
     private lazy var pageView: DugongFloatingTabPageViewController = {
         let pageView = DugongFloatingTabPageViewController(pages: pages, option: option)

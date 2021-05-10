@@ -9,7 +9,7 @@
 import UIKit
 import DugongFloatingTab
 
-class PageViewController: UIViewController, DugongFloatingTabPageDelegate{
+class PageViewController: UIViewController, DugongFloatingTabPageDelegate {
     @IBOutlet weak var tableView: UITableView!
     var stickyHeaderChildScrollView: UIScrollView?
     var pageIndex: Int = 0

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         return view
     }()
 
-    private lazy var stickyHeaderView : DugongFloatingTabViewController = {
+    private lazy var floatingTabViewController : DugongFloatingTabViewController = {
         let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 50, menuTabHeight: 50)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }()
 
     private let pages: [DugongFloatingTabPageDelegate] = {
-        let tabTitle: [String] = ["camel", "dugong", "quokka", "elephant", "panda", "hedgehog"]
+        let tabTitle: [String] = ["camel", "dugong", "quokka", "elephant", "hedgehog", "panda"]
         let pages = tabTitle.enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
             guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
             child.pageIndex = index
@@ -48,6 +48,6 @@ class ViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
-        container.addSubview(stickyHeaderView.view)
+        container.addSubview(floatingTabViewController.view)
     }
 }
