@@ -36,7 +36,7 @@ extension PageViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "menu \(title ?? "") row : \(indexPath.row)"
+        cell.textLabel?.text = "\(title ?? "") row : \(indexPath.row)"
         return cell
     }
 

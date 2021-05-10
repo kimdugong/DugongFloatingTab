@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }()
 
     private let pages: [DugongFloatingTabPageDelegate] = {
-        let tabTitle: [String] = ["낙타", "추천", "커피", "에이드", "디저트", "스위트", "잡다용품", "기타쩌리"]
+        let tabTitle: [String] = ["camel", "dugong", "quokka", "elephant", "panda", "hedgehog"]
         let pages = tabTitle.enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
             guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
             child.pageIndex = index
