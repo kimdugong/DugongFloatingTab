@@ -1,6 +1,6 @@
 # DugongFloatingTab
 
-[![CI Status](https://img.shields.io/travis/kimdugong/DugongFloatingTab.svg?style=flat)](https://travis-ci.org/kimdugong/DugongFloatingTab)
+[![CI Status](https://img.shields.io/travis/com/kimdugong/DugongFloatingTab.svg?style=flat)](https://travis-ci.com/kimdugong/DugongFloatingTab)
 [![Version](https://img.shields.io/cocoapods/v/DugongFloatingTab.svg?style=flat)](https://cocoapods.org/pods/DugongFloatingTab)
 [![License](https://img.shields.io/cocoapods/l/DugongFloatingTab.svg?style=flat)](https://cocoapods.org/pods/DugongFloatingTab)
 [![Platform](https://img.shields.io/cocoapods/p/DugongFloatingTab.svg?style=flat)](https://cocoapods.org/pods/DugongFloatingTab)
