@@ -26,7 +26,7 @@ public class DugongFloatingTabConfiguration {
     /// Set DugongStickyHeader's height. DugongStickyHeader's height would be headerMaxHeight + menuTabHeight
     /// - Parameters:
     ///   - headerMaxHeight: headerView's maximum height.
-    ///   - headerMinHeight: headerView's minimum height. If you want menu tab floating effect, headerMinHeight should be greater than menuTabHeight.
+    ///   - headerMinHeight: headerView's minimum height. Actual headerView's minimum height could be headerMinHeight + menuTabHeight
     ///   - menuTabHeight: menu tab's height.
     public init(headerMaxHeight: CGFloat, headerMinHeight: CGFloat, menuTabHeight: CGFloat) {
         self.headerMaxHeight = headerMaxHeight

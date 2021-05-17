@@ -15,12 +15,11 @@ class ViewController: UIViewController {
     private let headerView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemOrange
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var floatingTabViewController : DugongFloatingTabViewController = {
-        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 50, menuTabHeight: 50)
+        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 50)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
         option.selectedMenuTabItemUnderlineColor = .black
@@ -50,5 +49,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         container.addSubview(floatingTabViewController.view)
+        floatingTabViewController.view.frame = floatingTabViewController.view.superview?.bounds ?? .zero
     }
 }

@@ -20,10 +20,10 @@ public class DugongFloatingTabViewController: UIViewController {
     ///   - option: Configuration class including interface option
     public init(pages: [DugongFloatingTabPageDelegate], headerView: UIView, option: DugongFloatingTabConfiguration) {
         self.pages = pages
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         self.headerView = headerView
         self.option = option
         self.isSelectedItem = [Bool](repeating: false, count: pages.count)
-        self.isSelectedItem[0] = true
         super.init(nibName: nil, bundle: nil)
         configuration(option: option)
     }
@@ -54,14 +54,13 @@ public class DugongFloatingTabViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(contentView)
-        view.autoresizingMask = [.flexibleRightMargin, .flexibleHeight]
         contentView.addSubview(pageView.view)
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
-                contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                contentView.topAnchor.constraint(equalTo: view.topAnchor)
+                contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
             ])
         } else {
             NSLayoutConstraint.activate([
@@ -97,6 +96,10 @@ public class DugongFloatingTabViewController: UIViewController {
         childVC.delegate = self
         childVC.stickyHeaderChildScrollView?.contentOffset.y = -(option.headerMaxHeight + option.menuTabHeight)
         childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+    }
+
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
 }
 
@@ -176,18 +179,18 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
         option.minimumLineSpacing
     }
 
-//    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        isSelectedItem = stickyHeaderView.selectedItemHighligt(index: pageView.visiablePageIndex, isSelectedItem: isSelectedItem)
-//        stickyHeaderView.moveSelectedUnderlineView(index: pageView.visiablePageIndex, animated: false)
-//        return .zero
-//    }
-//    
-//    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
-//            return collectionView.bounds.size
-//        }
-//        return CGSize(width: cell.bounds.width, height: collectionView.bounds.height)
-//    }
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        isSelectedItem = stickyHeaderView.selectedItemHighligt(index: pageView.visiablePageIndex, isSelectedItem: isSelectedItem)
+        stickyHeaderView.moveSelectedUnderlineView(index: pageView.visiablePageIndex, animated: false)
+        return .zero
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
+            return collectionView.bounds.size
+        }
+        return CGSize(width: cell.bounds.width, height: collectionView.bounds.height)
+    }
 
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         isSelectedItem = stickyHeaderView.selectedItemHighligt(index: indexPath.item, isSelectedItem: isSelectedItem)
