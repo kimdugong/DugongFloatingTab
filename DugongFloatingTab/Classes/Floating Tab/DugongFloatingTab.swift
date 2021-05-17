@@ -58,7 +58,7 @@ class DugongFloatingTab: UIView {
             menu.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             menu.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             menu.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            menu.heightAnchor.constraint(lessThanOrEqualToConstant: option.menuTabHeight)
+            menu.heightAnchor.constraint(equalToConstant: option.menuTabHeight)
         ])
 
         NSLayoutConstraint.activate([

@@ -30,7 +30,7 @@ public class DugongFloatingTabConfiguration {
     ///   - menuTabHeight: menu tab's height.
     public init(headerMaxHeight: CGFloat, headerMinHeight: CGFloat, menuTabHeight: CGFloat) {
         self.headerMaxHeight = headerMaxHeight
-        self.headerMinHeight = headerMinHeight
+        self.headerMinHeight = headerMinHeight + menuTabHeight
         self.menuTabHeight = menuTabHeight
     }
 }

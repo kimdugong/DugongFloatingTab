@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }()
 
     private lazy var floatingTabViewController : DugongFloatingTabViewController = {
-        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 50)
+        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 50, menuTabHeight: 50)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
         option.selectedMenuTabItemUnderlineColor = .black
@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         option.minimumLineSpacing = 10
 
         let stickyHeaderView = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
-//        stickyHeaderView.view.translatesAutoresizingMaskIntoConstraints = false
         return stickyHeaderView
     }()
 
@@ -51,13 +50,5 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         container.addSubview(floatingTabViewController.view)
-//        floatingTabViewController.view.sizeThatFits(container.frame.size)
-        
-//        NSLayoutConstraint.activate([
-//            floatingTabViewController.view.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-//            floatingTabViewController.view.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-//            floatingTabViewController.view.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-//            floatingTabViewController.view.topAnchor.constraint(equalTo: container.topAnchor)
-//        ])
     }
 }
