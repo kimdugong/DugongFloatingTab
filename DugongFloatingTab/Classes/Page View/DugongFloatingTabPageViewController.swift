@@ -12,8 +12,8 @@ class DugongFloatingTabPageViewController: UIPageViewController {
     private let option: DugongFloatingTabConfiguration
 
     var visiablePageIndex: Int = 0 {
-        willSet {
-            pageViewDelegate?.pageIndexWillChange(index: newValue)
+        didSet {
+            pageViewDelegate?.pageIndexDidChange(index: visiablePageIndex)
         }
     }
     
@@ -41,6 +41,7 @@ class DugongFloatingTabPageViewController: UIPageViewController {
 
     func pagingTo(toIndex index: Int, navigationDirection direction: UIPageViewController.NavigationDirection, headerViewHeight: CGFloat) {
         self.setViewControllers([pages[index]], direction: direction, animated: true) { [self]_ in
+            visiablePageIndex = index
             guard let childVC = pages[index] as? DugongFloatingTabPageDelegate else { return }
             childVC.delegate = self.parent as? DugongFloatingTabPageScrollDelegate
             if childVC.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + headerViewHeight <= (option.headerMaxHeight + option.menuTabHeight) {

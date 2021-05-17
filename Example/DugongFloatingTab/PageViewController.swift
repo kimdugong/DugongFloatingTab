@@ -22,7 +22,6 @@ class PageViewController: UIViewController, DugongFloatingTabPageDelegate {
 
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
-        view.addSubview(tableView)
 
         // assign your scroll view for me to handle offset, inset when change page view controller
         stickyHeaderChildScrollView = tableView

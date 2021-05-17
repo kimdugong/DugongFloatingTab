@@ -35,6 +35,7 @@ class DugongFloatingTab: UIView {
         collectionView.register(DugongFloatingTabCollectionViewItem.self,
                                 forCellWithReuseIdentifier: DugongFloatingTabCollectionViewItem.identifier)
         collectionView.backgroundColor = option.menuTabBackgroundColor
+
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .automatic
         } else {
@@ -96,6 +97,7 @@ class DugongFloatingTab: UIView {
         guard let cell = menu.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
             return
         }
+
         menu.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         selectedUnderlineView.removeFromSuperview()
         self.addSubview(selectedUnderlineView)
@@ -113,6 +115,26 @@ class DugongFloatingTab: UIView {
         } else {
             super.setNeedsLayout()
         }
+    }
+
+    func selectedItemHighligt(index: Int, isSelectedItem: [Bool]) -> [Bool] {
+        let indexPath = IndexPath(item: index, section: 0)
+        return isSelectedItem.enumerated().map({ (index, isSelected) in
+            if isSelected {
+                guard let cell = menu.cellForItem(at: IndexPath(item: index, section: 0)) as? DugongFloatingTabCollectionViewItem else {
+                    return false
+                }
+                cell.update(isSelected: false, option: option)
+            }
+            if indexPath.item == index {
+                guard let cell = menu.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
+                    return true
+                }
+                cell.update(isSelected: true, option: option)
+                return true
+            }
+            return false
+        })
     }
 
     required init?(coder: NSCoder) {

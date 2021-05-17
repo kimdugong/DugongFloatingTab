@@ -26,13 +26,15 @@ class ViewController: UIViewController {
         option.selectedMenuTabItemUnderlineColor = .black
         option.menuTabBackgroundColor = .systemTeal
         option.menuTabItemBackgroundColor = .white
-
-        option.menuTabItemLabelFont = UIFont.boldSystemFont(ofSize: 20)
-        option.menuTabItemLabelTextColor = .black
+        option.menuTabSelectedItemLabelFont = UIFont.boldSystemFont(ofSize: 20)
+        option.menuTabSeletedItemLabelTextColor = .black
+        option.menuTabItemLabelFont = UIFont.systemFont(ofSize: 20)
+        option.menuTabItemLabelTextColor = .gray
         option.menuTabItemEdgeInsetForSection = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
         option.minimumLineSpacing = 10
 
         let stickyHeaderView = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
+//        stickyHeaderView.view.translatesAutoresizingMaskIntoConstraints = false
         return stickyHeaderView
     }()
 
@@ -49,5 +51,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         container.addSubview(floatingTabViewController.view)
+//        floatingTabViewController.view.sizeThatFits(container.frame.size)
+        
+//        NSLayoutConstraint.activate([
+//            floatingTabViewController.view.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+//            floatingTabViewController.view.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+//            floatingTabViewController.view.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+//            floatingTabViewController.view.topAnchor.constraint(equalTo: container.topAnchor)
+//        ])
     }
 }
