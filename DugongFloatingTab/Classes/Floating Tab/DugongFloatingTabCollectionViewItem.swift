@@ -14,6 +14,7 @@ class DugongFloatingTabCollectionViewItem: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
         return label
     }()
     

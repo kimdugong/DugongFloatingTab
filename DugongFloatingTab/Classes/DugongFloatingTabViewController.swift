@@ -12,6 +12,7 @@ public class DugongFloatingTabViewController: UIViewController {
     private var pages: [DugongFloatingTabPageDelegate]
     private var option: DugongFloatingTabConfiguration
     private var isSelectedItem: [Bool]
+    public weak var delegate: DugongFloatingTabViewControllerDelegate?
 
     /// DugongFloatingTabViewController's initializing
     /// - Parameters:
@@ -132,11 +133,13 @@ extension DugongFloatingTabViewController: DugongFloatingTabPageViewControllerDe
     func pageIndexDidChange(index: Int) {
         isSelectedItem = stickyHeaderView.selectedItemHighligt(index: index, isSelectedItem: isSelectedItem)
         stickyHeaderView.moveSelectedUnderlineView(index: index)
+        delegate?.pageIndexDidChange(index: index)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         pageViewController.viewControllers?.compactMap({ $0 as? DugongFloatingTabPageDelegate })
             .forEach({ $0.delegate = self })
+        delegate?.pageViewController(pageViewController, didFinishAnimating: finished, previousViewControllers: previousViewControllers, transitionCompleted: completed)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
@@ -148,6 +151,7 @@ extension DugongFloatingTabViewController: DugongFloatingTabPageViewControllerDe
             .compactMap({ $0 as? DugongFloatingTabPageDelegate })
             .filter({ $0.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + stickyHeaderView.bounds.height <= (option.headerMaxHeight + option.menuTabHeight) })
             .forEach({ $0.stickyHeaderChildScrollView?.contentOffset.y = -stickyHeaderView.bounds.height })
+        delegate?.pageViewController(pageViewController, willTransitionTo: pendingViewControllers)
     }
 }
 

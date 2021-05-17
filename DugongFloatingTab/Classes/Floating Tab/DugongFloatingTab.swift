@@ -90,6 +90,19 @@ class DugongFloatingTab: UIView {
             selectedUnderlineView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             selectedUnderlineView.heightAnchor.constraint(equalToConstant: option.selectedMenuTabItemUnderlineHeight),
         ])
+        
+        
+    }
+    
+    override func layoutSubviews() {
+        if option.headerBarShadow {
+            layer.masksToBounds = false
+            layer.shadowColor = option.headerBarShadowColor.cgColor
+            layer.shadowOffset = option.headerBarShadowOffset
+            layer.shadowRadius = option.headerBarShadowRadius
+            layer.shadowOpacity = option.headerBarShadowOpacity
+            layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        }
     }
 
     func moveSelectedUnderlineView(index: Int, animated: Bool = true) {
@@ -120,12 +133,6 @@ class DugongFloatingTab: UIView {
     func selectedItemHighligt(index: Int, isSelectedItem: [Bool]) -> [Bool] {
         let indexPath = IndexPath(item: index, section: 0)
         return isSelectedItem.enumerated().map({ (index, isSelected) in
-            if isSelected {
-                guard let cell = menu.cellForItem(at: IndexPath(item: index, section: 0)) as? DugongFloatingTabCollectionViewItem else {
-                    return false
-                }
-                cell.update(isSelected: false, option: option)
-            }
             if indexPath.item == index {
                 guard let cell = menu.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
                     return true
@@ -133,6 +140,14 @@ class DugongFloatingTab: UIView {
                 cell.update(isSelected: true, option: option)
                 return true
             }
+            
+            if isSelected {
+                guard let cell = menu.cellForItem(at: IndexPath(item: index, section: 0)) as? DugongFloatingTabCollectionViewItem else {
+                    return false
+                }
+                cell.update(isSelected: false, option: option)
+            }
+            
             return false
         })
     }

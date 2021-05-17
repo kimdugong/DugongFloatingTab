@@ -19,21 +19,26 @@ class ViewController: UIViewController {
     }()
 
     private lazy var floatingTabViewController : DugongFloatingTabViewController = {
-        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 50)
+        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 40)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
         option.selectedMenuTabItemUnderlineColor = .black
         option.menuTabBackgroundColor = .systemTeal
         option.menuTabItemBackgroundColor = .white
-        option.menuTabSelectedItemLabelFont = UIFont.boldSystemFont(ofSize: 20)
+        option.menuTabSelectedItemLabelFont = UIFont.boldSystemFont(ofSize: 14)
         option.menuTabSeletedItemLabelTextColor = .black
-        option.menuTabItemLabelFont = UIFont.systemFont(ofSize: 20)
+        option.menuTabItemLabelFont = UIFont.systemFont(ofSize: 14)
         option.menuTabItemLabelTextColor = .gray
         option.menuTabItemEdgeInsetForSection = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
         option.minimumLineSpacing = 10
+        option.headerBarShadow = true
+        option.headerBarShadowOffset = CGSize(width: 0, height: 0.5)
+        option.headerBarShadowOpacity = 0.2
+        option.headerBarShadowRadius = 3
 
-        let stickyHeaderView = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
-        return stickyHeaderView
+        let floatingTabViewController = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
+        floatingTabViewController.delegate = self
+        return floatingTabViewController
     }()
 
     private let pages: [DugongFloatingTabPageDelegate] = {
@@ -51,4 +56,19 @@ class ViewController: UIViewController {
         container.addSubview(floatingTabViewController.view)
         floatingTabViewController.view.frame = floatingTabViewController.view.superview?.bounds ?? .zero
     }
+}
+
+extension ViewController: DugongFloatingTabViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+    }
+    
+    func pageIndexDidChange(index: Int) {
+        print(index)
+    }
+    
 }

@@ -22,6 +22,12 @@ public class DugongFloatingTabConfiguration {
     public var menuTabSeletedItemLabelTextColor: UIColor?
     public var menuTabItemEdgeInsetForSection: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
     public var minimumLineSpacing: CGFloat = 10
+    public var headerBarShadow: Bool = false
+    public var headerBarShadowColor: UIColor = .black
+    public var headerBarShadowOffset: CGSize = .zero
+    public var headerBarShadowRadius: CGFloat = 0
+    public var headerBarShadowOpacity: Float = 0.3
+    
 
     /// Set DugongStickyHeader's height. DugongStickyHeader's height would be headerMaxHeight + menuTabHeight
     /// - Parameters:
