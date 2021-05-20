@@ -11,7 +11,7 @@
 		15646E595E9B40D85E8AEBB4BB0319B6 /* DugongFloatingTab-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DE8C41444B4982905FD6D9C3A28179D0 /* DugongFloatingTab-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E52AB83773B6E7632DDD99D6F4C5AB4 /* DugongFloatingTab-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3A88D6E9A509A66B50E6C53AB214C /* DugongFloatingTab-dummy.m */; };
 		3AC8F0C36139FCFD255DE86AAF580E60 /* Pods-DugongFloatingTab_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A98BE163639783D9BAEFEB41C95756F1 /* Pods-DugongFloatingTab_Example-dummy.m */; };
-		427E26802656960E004AA5AF /* DugongFloatingTabViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E267F2656960E004AA5AF /* DugongFloatingTabViewControllerDelegate.swift */; };
+		427E2682265697E4004AA5AF /* DugongFloatingTabViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E2681265697E4004AA5AF /* DugongFloatingTabViewControllerDelegate.swift */; };
 		42E047E12648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E02648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift */; };
 		42E047E42648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E32648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift */; };
 		42E047E62648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E047E52648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift */; };
@@ -53,7 +53,7 @@
 		2CA270FEC9CAD155154DB0DCC5AFF950 /* Pods_DugongFloatingTab_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DugongFloatingTab_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D300D57C5C60EC6BE27B02E5D8ACA62 /* Pods_DugongFloatingTab_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DugongFloatingTab_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F74E092B9D779EAD47682CE0872B03 /* Pods-DugongFloatingTab_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DugongFloatingTab_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		427E267F2656960E004AA5AF /* DugongFloatingTabViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DugongFloatingTabViewControllerDelegate.swift; path = DugongFloatingTab/Classes/DugongFloatingTabViewControllerDelegate.swift; sourceTree = "<group>"; };
+		427E2681265697E4004AA5AF /* DugongFloatingTabViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DugongFloatingTabViewControllerDelegate.swift; path = DugongFloatingTab/Classes/DugongFloatingTabViewControllerDelegate.swift; sourceTree = "<group>"; };
 		42E047E02648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DugongFloatingTabViewController.swift; path = DugongFloatingTab/Classes/DugongFloatingTabViewController.swift; sourceTree = "<group>"; };
 		42E047E32648CB4000EAEBA7 /* DugongFloatingTabPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DugongFloatingTabPageDelegate.swift; sourceTree = "<group>"; };
 		42E047E52648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DugongFloatingTabConfiguration.swift; path = DugongFloatingTab/Classes/DugongFloatingTabConfiguration.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				42E047E02648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift */,
-				427E267F2656960E004AA5AF /* DugongFloatingTabViewControllerDelegate.swift */,
+				427E2681265697E4004AA5AF /* DugongFloatingTabViewControllerDelegate.swift */,
 				42E047E52648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift */,
 				42E047E92648CDB400EAEBA7 /* Floating Tab */,
 				42E047E22648CADA00EAEBA7 /* Page View */,
@@ -420,10 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E047E62648CBDD00EAEBA7 /* DugongFloatingTabConfiguration.swift in Sources */,
-				427E26802656960E004AA5AF /* DugongFloatingTabViewControllerDelegate.swift in Sources */,
 				42E047E12648CA7D00EAEBA7 /* DugongFloatingTabViewController.swift in Sources */,
 				1E52AB83773B6E7632DDD99D6F4C5AB4 /* DugongFloatingTab-dummy.m in Sources */,
 				42E047E82648CC9000EAEBA7 /* DugongFloatingTabPageViewController.swift in Sources */,
+				427E2682265697E4004AA5AF /* DugongFloatingTabViewControllerDelegate.swift in Sources */,
 				42E047ED2648CE1D00EAEBA7 /* DugongFloatingTabCollectionViewFlowLayout.swift in Sources */,
 				42E047EF2648CE4600EAEBA7 /* DugongFloatingTabCollectionViewItem.swift in Sources */,
 				42E047EB2648CDDC00EAEBA7 /* DugongFloatingTab.swift in Sources */,
