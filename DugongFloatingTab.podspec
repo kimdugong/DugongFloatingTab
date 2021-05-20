@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DugongFloatingTab'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'Floating Tabbar with Size-Changing Top View'
 
 # This description is used to generate tags and improve search results.
