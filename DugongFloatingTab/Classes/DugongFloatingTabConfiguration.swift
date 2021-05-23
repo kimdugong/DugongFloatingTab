@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DugongFloatingTabConfiguration {
+public final class DugongFloatingTabConfiguration {
     public let headerMaxHeight: CGFloat
     public let headerMinHeight: CGFloat
     public let menuTabHeight: CGFloat

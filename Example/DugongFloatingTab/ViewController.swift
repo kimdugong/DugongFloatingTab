@@ -67,8 +67,8 @@ extension ViewController: DugongFloatingTabViewControllerDelegate {
         
     }
     
-    func pageIndexDidChange(index: Int) {
-        print(index)
+    func pageIndexDidChange(index: Int, previous: Int) {
+        print(previous, "--->", index)
     }
     
 }

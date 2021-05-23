@@ -91,7 +91,6 @@ class DugongFloatingTab: UIView {
             selectedUnderlineView.heightAnchor.constraint(equalToConstant: option.selectedMenuTabItemUnderlineHeight),
         ])
         
-        
     }
     
     override func layoutSubviews() {
@@ -130,27 +129,6 @@ class DugongFloatingTab: UIView {
         }
     }
 
-    func selectedItemHighligt(index: Int, isSelectedItem: [Bool]) -> [Bool] {
-        let indexPath = IndexPath(item: index, section: 0)
-        return isSelectedItem.enumerated().map({ (index, isSelected) in
-            if indexPath.item == index {
-                guard let cell = menu.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
-                    return true
-                }
-                cell.update(isSelected: true, option: option)
-                return true
-            }
-            
-            if isSelected {
-                guard let cell = menu.cellForItem(at: IndexPath(item: index, section: 0)) as? DugongFloatingTabCollectionViewItem else {
-                    return false
-                }
-                cell.update(isSelected: false, option: option)
-            }
-            
-            return false
-        })
-    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

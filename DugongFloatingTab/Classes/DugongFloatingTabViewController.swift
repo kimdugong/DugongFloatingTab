@@ -11,7 +11,6 @@ public class DugongFloatingTabViewController: UIViewController {
     private var headerView: UIView
     private var pages: [DugongFloatingTabPageDelegate]
     private var option: DugongFloatingTabConfiguration
-    private var isSelectedItem: [Bool]
     public weak var delegate: DugongFloatingTabViewControllerDelegate?
 
     /// DugongFloatingTabViewController's initializing
@@ -24,7 +23,6 @@ public class DugongFloatingTabViewController: UIViewController {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         self.headerView = headerView
         self.option = option
-        self.isSelectedItem = [Bool](repeating: false, count: pages.count)
         super.init(nibName: nil, bundle: nil)
         configuration(option: option)
     }
@@ -43,7 +41,7 @@ public class DugongFloatingTabViewController: UIViewController {
         return view
     }()
     
-    private lazy var stickyHeaderView = DugongFloatingTab(view: headerView, option: option)
+    private lazy var floatingTab = DugongFloatingTab(view: headerView, option: option)
     
     private lazy var pageView: DugongFloatingTabPageViewController = {
         let pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
@@ -81,16 +79,16 @@ public class DugongFloatingTabViewController: UIViewController {
             pageView.view.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
         
-        view.addSubview(stickyHeaderView)
+        view.addSubview(floatingTab)
         NSLayoutConstraint.activate([
-            stickyHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
-            stickyHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stickyHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stickyHeaderView.heightAnchor.constraint(equalToConstant: option.headerMaxHeight)
+            floatingTab.topAnchor.constraint(equalTo: view.topAnchor),
+            floatingTab.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            floatingTab.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            floatingTab.heightAnchor.constraint(equalToConstant: option.headerMaxHeight)
         ])
         
-        stickyHeaderView.menu.delegate = self
-        stickyHeaderView.menu.dataSource = self
+        floatingTab.menu.delegate = self
+        floatingTab.menu.dataSource = self
         
         // initializing first pageview's scrollview inset and offset
         guard let childVC = pageView.viewControllers?.first as? DugongFloatingTabPageDelegate else { return }
@@ -110,30 +108,34 @@ extension DugongFloatingTabViewController: DugongFloatingTabPageScrollDelegate {
             return
         }
         if scrollView.contentOffset.y < 0 {
-            for constraint in stickyHeaderView.constraints {
+            for constraint in floatingTab.constraints {
                 guard constraint.firstAttribute == .height  else { continue }
                 constraint.constant = max(abs(scrollView.contentOffset.y), option.headerMinHeight)
                 break
             }
         } else {
-            for constraint in stickyHeaderView.constraints {
+            for constraint in floatingTab.constraints {
                 guard constraint.firstAttribute == .height else { continue }
                 constraint.constant = option.headerMinHeight
                 break
             }
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-                self.stickyHeaderView.layoutIfNeeded()
+                self.floatingTab.layoutIfNeeded()
             }, completion: nil)
         }
     }
 }
 
 extension DugongFloatingTabViewController: DugongFloatingTabPageViewControllerDelegate {
-    func pageIndexDidChange(index: Int) {
-        isSelectedItem = stickyHeaderView.selectedItemHighligt(index: index, isSelectedItem: isSelectedItem)
-        stickyHeaderView.moveSelectedUnderlineView(index: index)
-        delegate?.pageIndexDidChange(index: index)
+    func pageIndexDidChange(index: Int, previous: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        let cell = floatingTab.menu.cellForItem(at: IndexPath(item: previous, section: 0))
+        cell?.isSelected = false
+        
+        floatingTab.menu.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+        floatingTab.moveSelectedUnderlineView(index: index)
+        delegate?.pageIndexDidChange(index: index, previous: previous)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -149,8 +151,8 @@ extension DugongFloatingTabViewController: DugongFloatingTabPageViewControllerDe
         
         pendingViewControllers
             .compactMap({ $0 as? DugongFloatingTabPageDelegate })
-            .filter({ $0.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + stickyHeaderView.bounds.height <= (option.headerMaxHeight + option.menuTabHeight) })
-            .forEach({ $0.stickyHeaderChildScrollView?.contentOffset.y = -stickyHeaderView.bounds.height })
+            .filter({ $0.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + floatingTab.bounds.height <= (option.headerMaxHeight + option.menuTabHeight) })
+            .forEach({ $0.stickyHeaderChildScrollView?.contentOffset.y = -floatingTab.bounds.height })
         delegate?.pageViewController(pageViewController, willTransitionTo: pendingViewControllers)
     }
 }
@@ -164,15 +166,19 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DugongFloatingTabCollectionViewItem.identifier, for: indexPath) as? DugongFloatingTabCollectionViewItem else {
             return UICollectionViewCell()
         }
-
+        
         cell.setupUI(title: pages[indexPath.row].title, option: option)
-        cell.update(isSelected: isSelectedItem[indexPath.item], option: option)
+        
+        if indexPath.item == 0 {
+            cell.isSelected = true
+        }
+
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let direction: UIPageViewController.NavigationDirection = indexPath.item > pageView.visiablePageIndex ? .forward : .reverse
-        pageView.pagingTo(toIndex: indexPath.item, navigationDirection: direction, headerViewHeight: stickyHeaderView.bounds.height)
+        pageView.pagingTo(toIndex: indexPath.item, navigationDirection: direction, headerViewHeight: floatingTab.bounds.height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -184,8 +190,7 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        isSelectedItem = stickyHeaderView.selectedItemHighligt(index: pageView.visiablePageIndex, isSelectedItem: isSelectedItem)
-        stickyHeaderView.moveSelectedUnderlineView(index: pageView.visiablePageIndex, animated: false)
+        floatingTab.moveSelectedUnderlineView(index: pageView.visiablePageIndex, animated: false)
         return .zero
     }
 
@@ -194,10 +199,5 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
             return collectionView.bounds.size
         }
         return CGSize(width: cell.bounds.width, height: collectionView.bounds.height)
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        isSelectedItem = stickyHeaderView.selectedItemHighligt(index: indexPath.item, isSelectedItem: isSelectedItem)
-        return true
     }
 }

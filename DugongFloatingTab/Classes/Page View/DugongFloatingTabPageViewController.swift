@@ -13,7 +13,7 @@ class DugongFloatingTabPageViewController: UIPageViewController {
 
     var visiablePageIndex: Int = 0 {
         didSet {
-            pageViewDelegate?.pageIndexDidChange(index: visiablePageIndex)
+            pageViewDelegate?.pageIndexDidChange(index: visiablePageIndex, previous: oldValue)
         }
     }
     

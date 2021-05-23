@@ -25,6 +25,10 @@ class DugongFloatingTabCollectionViewItem: UICollectionViewCell {
         return view
     }()
     
+    override func prepareForReuse() {
+        isSelected = false
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         config()
@@ -61,15 +65,17 @@ class DugongFloatingTabCollectionViewItem: UICollectionViewCell {
         titleLabel.font = option.menuTabItemLabelFont
         titleLabel.sizeToFit()
     }
-
-    func update(isSelected: Bool, option: DugongFloatingTabConfiguration) {
-        if isSelected {
-            titleLabel.textColor = option.menuTabSeletedItemLabelTextColor
-            titleLabel.font = option.menuTabSelectedItemLabelFont
-        }
-        else {
-            titleLabel.textColor = option.menuTabItemLabelTextColor
-            titleLabel.font = option.menuTabItemLabelFont
+    
+    override var isSelected: Bool {
+        willSet {
+            if newValue {
+                titleLabel.textColor = option?.menuTabSeletedItemLabelTextColor
+                titleLabel.font = option?.menuTabSelectedItemLabelFont
+            }
+            else {
+                titleLabel.textColor = option?.menuTabItemLabelTextColor
+                titleLabel.font = option?.menuTabItemLabelFont
+            }
         }
     }
     
