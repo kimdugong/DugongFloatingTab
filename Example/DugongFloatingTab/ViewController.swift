@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         option.headerBarShadowOffset = CGSize(width: 0, height: 0.5)
         option.headerBarShadowOpacity = 0.2
         option.headerBarShadowRadius = 3
+        option.pageViewControllerSwipePagingDisable = false
 
         let floatingTabViewController = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
         floatingTabViewController.delegate = self

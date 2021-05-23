@@ -27,6 +27,7 @@ public final class DugongFloatingTabConfiguration {
     public var headerBarShadowOffset: CGSize = .zero
     public var headerBarShadowRadius: CGFloat = 0
     public var headerBarShadowOpacity: Float = 0.3
+    public var pageViewControllerSwipePagingDisable = false
     
 
     /// Set DugongStickyHeader's height. DugongStickyHeader's height would be headerMaxHeight + menuTabHeight
