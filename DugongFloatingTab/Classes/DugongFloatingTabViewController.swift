@@ -84,7 +84,7 @@ public class DugongFloatingTabViewController: UIViewController {
             floatingTab.topAnchor.constraint(equalTo: view.topAnchor),
             floatingTab.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             floatingTab.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            floatingTab.heightAnchor.constraint(equalToConstant: option.headerMaxHeight)
+            floatingTab.heightAnchor.constraint(equalToConstant: option.headerMaxHeight + option.menuTabHeight)
         ])
         
         floatingTab.menu.delegate = self
@@ -96,14 +96,13 @@ public class DugongFloatingTabViewController: UIViewController {
         childVC.stickyHeaderChildScrollView?.contentOffset.y = -(option.headerMaxHeight + option.menuTabHeight)
         childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
     }
-
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
 }
 
 extension DugongFloatingTabViewController: DugongFloatingTabPageScrollDelegate {
     public func childViewScrollViewDidScroll(_ scrollView: UIScrollView) {
+        if option.menuTabFixedPosition {
+            return
+        }
         if scrollView.contentOffset.y == 0 {
             return
         }

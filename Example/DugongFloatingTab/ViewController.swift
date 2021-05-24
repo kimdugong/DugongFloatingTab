@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }()
 
     private lazy var floatingTabViewController : DugongFloatingTabViewController = {
-        let option = DugongFloatingTabConfiguration(headerMaxHeight: 200, headerMinHeight: 0, menuTabHeight: 40)
+        let option = DugongFloatingTabConfiguration(headerMaxHeight: 100, headerMinHeight: 0, menuTabHeight: 40)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
         option.selectedMenuTabItemUnderlineColor = .black
@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         option.headerBarShadowOpacity = 0.2
         option.headerBarShadowRadius = 3
         option.pageViewControllerSwipePagingDisable = false
+        option.menuTabFixedPosition = false
 
         let floatingTabViewController = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
         floatingTabViewController.delegate = self
