@@ -11,7 +11,8 @@ import DugongFloatingTab
 
 class ViewController: UIViewController {
     @IBOutlet weak var container: UIView!
-    
+
+    private var tabTitle: [String] = []
     private let headerView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemOrange
@@ -38,13 +39,13 @@ class ViewController: UIViewController {
         option.pageViewControllerSwipePagingDisable = false
         option.menuTabFixedPosition = false
 
-        let floatingTabViewController = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
+        let floatingTabViewController = DugongFloatingTabViewController(headerView: headerView, option: option)
         floatingTabViewController.delegate = self
         return floatingTabViewController
     }()
 
-    private let pages: [DugongFloatingTabPageDelegate] = {
-        let tabTitle: [String] = ["camel", "dugong", "quokka", "elephant", "hedgehog", "panda"]
+    private lazy var pages: [DugongFloatingTabPageDelegate] = {
+        let tabTitle: [String] = ["camel", "dugong", "quokka", "elephant", "hedgehog", "panda", "lion"]
         let pages = tabTitle.enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
             guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
             child.pageIndex = index
@@ -57,6 +58,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         container.addSubview(floatingTabViewController.view)
         floatingTabViewController.view.frame = floatingTabViewController.view.superview?.bounds ?? .zero
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fakeFetchTabTitle()
+    }
+
+    private func fakeFetchTabTitle() {
+        sleep(10)
+        let pages = ["lion", "camel", "dugong", "quokka", "elephant", "hedgehog", "panda"].enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
+            guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
+            child.pageIndex = index
+            child.title = title
+            return child
+        }
+        floatingTabViewController.pages = pages
     }
 }
 

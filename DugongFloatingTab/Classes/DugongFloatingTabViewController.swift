@@ -9,8 +9,12 @@ import UIKit
 
 public class DugongFloatingTabViewController: UIViewController {
     private var headerView: UIView
-    private var pages: [DugongFloatingTabPageDelegate]
     private var option: DugongFloatingTabConfiguration
+    public var pages: [DugongFloatingTabPageDelegate] = [] {
+        didSet {
+            addPage(pages: pages)
+        }
+    }
     public weak var delegate: DugongFloatingTabViewControllerDelegate?
 
     /// DugongFloatingTabViewController's initializing
@@ -18,11 +22,11 @@ public class DugongFloatingTabViewController: UIViewController {
     ///   - pages: Array of VC conformming to DugongFloatingTabPageDelegate protocol
     ///   - headerView: Size-changing top view
     ///   - option: Configuration class including interface option
-    public init(pages: [DugongFloatingTabPageDelegate], headerView: UIView, option: DugongFloatingTabConfiguration) {
-        self.pages = pages
+    public init(pages: [DugongFloatingTabPageDelegate] = [], headerView: UIView, option: DugongFloatingTabConfiguration) {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         self.headerView = headerView
         self.option = option
+        self.pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
         super.init(nibName: nil, bundle: nil)
         configuration(option: option)
     }
@@ -42,17 +46,14 @@ public class DugongFloatingTabViewController: UIViewController {
     }()
     
     private lazy var floatingTab = DugongFloatingTab(view: headerView, option: option)
-    
-    private lazy var pageView: DugongFloatingTabPageViewController = {
-        let pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
+
+    private var pageView: DugongFloatingTabPageViewController
+
+    private func addPage(pages: [DugongFloatingTabPageDelegate]) {
+        pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
         pageView.view.translatesAutoresizingMaskIntoConstraints = false
         pageView.pageViewDelegate = self
-        return pageView
-    }()
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(contentView)
+
         contentView.addSubview(pageView.view)
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
@@ -69,7 +70,7 @@ public class DugongFloatingTabViewController: UIViewController {
                 contentView.topAnchor.constraint(equalTo: view.topAnchor)
             ])
         }
-        
+
         addChild(pageView)
         pageView.didMove(toParent: self)
         NSLayoutConstraint.activate([
@@ -78,7 +79,7 @@ public class DugongFloatingTabViewController: UIViewController {
             pageView.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             pageView.view.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
-        
+
         view.addSubview(floatingTab)
         NSLayoutConstraint.activate([
             floatingTab.topAnchor.constraint(equalTo: view.topAnchor),
@@ -86,15 +87,20 @@ public class DugongFloatingTabViewController: UIViewController {
             floatingTab.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             floatingTab.heightAnchor.constraint(equalToConstant: option.headerMaxHeight + option.menuTabHeight)
         ])
-        
+
         floatingTab.menu.delegate = self
         floatingTab.menu.dataSource = self
-        
+
         // initializing first pageview's scrollview inset and offset
         guard let childVC = pageView.viewControllers?.first as? DugongFloatingTabPageDelegate else { return }
         childVC.delegate = self
         childVC.stickyHeaderChildScrollView?.contentOffset.y = -(option.headerMaxHeight + option.menuTabHeight)
         childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(contentView)
     }
 }
 
