@@ -26,11 +26,6 @@ class DugongFloatingTab: UIView {
         let layout = DugongFloatingTabCollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        if #available(iOS 10.0, *) {
-            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        } else {
-            // Fallback on earlier versions
-        }
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(DugongFloatingTabCollectionViewItem.self,
                                 forCellWithReuseIdentifier: DugongFloatingTabCollectionViewItem.identifier)
@@ -84,6 +79,8 @@ class DugongFloatingTab: UIView {
         guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? DugongFloatingTabCollectionViewItem else {
             return
         }
+        selectedUnderlineView.removeFromSuperview()
+        self.addSubview(selectedUnderlineView)
         NSLayoutConstraint.activate([
             selectedUnderlineView.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
             selectedUnderlineView.trailingAnchor.constraint(equalTo: cell.trailingAnchor),

@@ -15,6 +15,7 @@ public class DugongFloatingTabViewController: UIViewController {
             addPage(pages: pages)
         }
     }
+    private var pageView: DugongFloatingTabPageViewController
     public weak var delegate: DugongFloatingTabViewControllerDelegate?
 
     /// DugongFloatingTabViewController's initializing
@@ -26,30 +27,39 @@ public class DugongFloatingTabViewController: UIViewController {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         self.headerView = headerView
         self.option = option
+        self.pages = pages
         self.pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
         super.init(nibName: nil, bundle: nil)
+        addPage(pages: pages)
         configuration(option: option)
     }
-    
+
     private func configuration(option: DugongFloatingTabConfiguration) {
         contentView.backgroundColor = option.contentViewBackgroundColor
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var floatingTab = DugongFloatingTab(view: headerView, option: option)
 
-    private var pageView: DugongFloatingTabPageViewController
 
     private func addPage(pages: [DugongFloatingTabPageDelegate]) {
+        pageView.view.removeFromSuperview()
+        pageView.removeFromParent()
+        floatingTab.removeFromSuperview()
+        for constraint in floatingTab.constraints {
+            guard constraint.firstAttribute == .height else { continue }
+            constraint.isActive = false
+        }
+        floatingTab.menu.reloadData()
         pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
         pageView.view.translatesAutoresizingMaskIntoConstraints = false
         pageView.pageViewDelegate = self
@@ -96,6 +106,7 @@ public class DugongFloatingTabViewController: UIViewController {
         childVC.delegate = self
         childVC.stickyHeaderChildScrollView?.contentOffset.y = -(option.headerMaxHeight + option.menuTabHeight)
         childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+
     }
     
     public override func viewDidLoad() {
@@ -172,7 +183,7 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
             return UICollectionViewCell()
         }
         
-        cell.setupUI(title: pages[indexPath.row].title, option: option)
+        cell.config(title: pages[indexPath.row].title, option: option)
         
         if indexPath.item == 0 {
             cell.isSelected = true
@@ -200,9 +211,10 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? DugongFloatingTabCollectionViewItem else {
-            return collectionView.bounds.size
-        }
-        return CGSize(width: cell.bounds.width, height: collectionView.bounds.height)
+        let cell = DugongFloatingTabCollectionViewItem()
+        cell.config(title: pages[indexPath.row].title, option: option)
+
+        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: option.menuTabHeight)
+        return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .required)
     }
 }

@@ -39,13 +39,13 @@ class ViewController: UIViewController {
         option.pageViewControllerSwipePagingDisable = false
         option.menuTabFixedPosition = false
 
-        let floatingTabViewController = DugongFloatingTabViewController(headerView: headerView, option: option)
+        let floatingTabViewController = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
         floatingTabViewController.delegate = self
         return floatingTabViewController
     }()
 
     private lazy var pages: [DugongFloatingTabPageDelegate] = {
-        let tabTitle: [String] = ["camel", "dugong", "quokka", "elephant", "hedgehog", "panda", "lion"]
+        let tabTitle: [String] = ["낙타", "듀공", "쿼카", "코끼리", "고슴도치"]
         let pages = tabTitle.enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
             guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
             child.pageIndex = index
@@ -62,12 +62,21 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fakeFetchTabTitle()
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.async { [self] in
+                fakeFetchTabTitle()
+            }
+        }
+//        DispatchQueue.global(qos: .background).async { [self] in
+//            sleep(10)
+//            DispatchQueue.main.async {
+//                fakeFetchTabTitle()
+//            }
+//        }
     }
 
     private func fakeFetchTabTitle() {
-        sleep(10)
-        let pages = ["lion", "camel", "dugong", "quokka", "elephant", "hedgehog", "panda"].enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
+        let pages = ["camel", "dugong", "quokka", "elephant", "hedgehog", "panda"].enumerated().compactMap { (index, title) -> DugongFloatingTabPageDelegate? in
             guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
             child.pageIndex = index
             child.title = title
