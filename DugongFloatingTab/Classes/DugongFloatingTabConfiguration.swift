@@ -8,9 +8,9 @@
 import UIKit
 
 public final class DugongFloatingTabConfiguration {
-    public let headerMaxHeight: CGFloat
-    public let headerMinHeight: CGFloat
-    public let menuTabHeight: CGFloat
+    public var headerMaxHeight: CGFloat
+    public var headerMinHeight: CGFloat
+    public var menuTabHeight: CGFloat
     public var contentViewBackgroundColor: UIColor?
     public var selectedMenuTabItemUnderlineHeight: CGFloat = 2.5
     public var selectedMenuTabItemUnderlineColor: UIColor = .black

@@ -9,6 +9,7 @@ import UIKit
 
 public protocol DugongFloatingTabPageScrollDelegate: AnyObject {
     func childViewScrollViewDidScroll(_ scrollView: UIScrollView)
+    func reloadFloatingTabPage()
 }
 
 public protocol DugongFloatingTabPageDelegate: UIViewController {

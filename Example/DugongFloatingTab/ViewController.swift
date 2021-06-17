@@ -19,8 +19,9 @@ class ViewController: UIViewController {
         return view
     }()
 
+    let option = DugongFloatingTabConfiguration(headerMaxHeight: 100, headerMinHeight: 0, menuTabHeight: 40)
+
     private lazy var floatingTabViewController : DugongFloatingTabViewController = {
-        let option = DugongFloatingTabConfiguration(headerMaxHeight: 100, headerMinHeight: 0, menuTabHeight: 40)
         option.contentViewBackgroundColor = .yellow
         option.selectedMenuTabItemUnderlineHeight = 2.5
         option.selectedMenuTabItemUnderlineColor = .black
@@ -67,12 +68,6 @@ class ViewController: UIViewController {
                 fakeFetchTabTitle()
             }
         }
-//        DispatchQueue.global(qos: .background).async { [self] in
-//            sleep(10)
-//            DispatchQueue.main.async {
-//                fakeFetchTabTitle()
-//            }
-//        }
     }
 
     private func fakeFetchTabTitle() {
@@ -80,6 +75,7 @@ class ViewController: UIViewController {
             guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as? PageViewController else { return nil }
             child.pageIndex = index
             child.title = title
+            child.option = option
             return child
         }
         floatingTabViewController.pages = pages

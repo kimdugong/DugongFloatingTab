@@ -116,6 +116,10 @@ public class DugongFloatingTabViewController: UIViewController {
 }
 
 extension DugongFloatingTabViewController: DugongFloatingTabPageScrollDelegate {
+    public func reloadFloatingTabPage() {
+        addPage(pages: pages)
+    }
+
     public func childViewScrollViewDidScroll(_ scrollView: UIScrollView) {
         if option.menuTabFixedPosition {
             return

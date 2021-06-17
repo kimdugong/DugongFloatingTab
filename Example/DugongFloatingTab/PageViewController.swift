@@ -13,6 +13,7 @@ class PageViewController: UIViewController, DugongFloatingTabPageDelegate {
     @IBOutlet weak var tableView: UITableView!
     var stickyHeaderChildScrollView: UIScrollView?
     var pageIndex: Int = 0
+    weak var option: DugongFloatingTabConfiguration?
     weak var delegate: DugongFloatingTabPageScrollDelegate?
 
     override func viewDidLoad() {
@@ -37,6 +38,11 @@ extension PageViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         cell.textLabel?.text = "\(title ?? "") row : \(indexPath.row)"
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        option?.headerMaxHeight = CGFloat(100 * indexPath.row)
+        delegate?.reloadFloatingTabPage()
     }
 
     // delegate me for floating tab
