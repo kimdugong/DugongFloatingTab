@@ -26,6 +26,7 @@ class DugongFloatingTab: UIView {
         let layout = DugongFloatingTabCollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = option.minimumInteritemSpacing
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(DugongFloatingTabCollectionViewItem.self,
                                 forCellWithReuseIdentifier: DugongFloatingTabCollectionViewItem.identifier)

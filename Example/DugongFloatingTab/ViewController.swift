@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         option.menuTabItemLabelTextColor = .gray
         option.menuTabItemEdgeInsetForSection = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
         option.minimumLineSpacing = 10
+        option.minimumInteritemSpacing = 28
         option.headerBarShadow = true
         option.headerBarShadowOffset = CGSize(width: 0, height: 0.5)
         option.headerBarShadowOpacity = 0.2
