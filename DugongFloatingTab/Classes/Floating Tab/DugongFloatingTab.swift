@@ -77,7 +77,8 @@ class DugongFloatingTab: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? DugongFloatingTabCollectionViewItem else {
+        guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? DugongFloatingTabCollectionViewItem,
+              selectedUnderlineView.frame == .zero else {
             return
         }
         selectedUnderlineView.removeFromSuperview()
@@ -88,7 +89,6 @@ class DugongFloatingTab: UIView {
             selectedUnderlineView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             selectedUnderlineView.heightAnchor.constraint(equalToConstant: option.selectedMenuTabItemUnderlineHeight),
         ])
-        
     }
     
     override func layoutSubviews() {
