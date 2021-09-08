@@ -77,6 +77,21 @@ class DugongFloatingTab: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        drawUnderline()
+    }
+    
+    override func layoutSubviews() {
+        if option.headerBarShadow {
+            layer.masksToBounds = false
+            layer.shadowColor = option.headerBarShadowColor.cgColor
+            layer.shadowOffset = option.headerBarShadowOffset
+            layer.shadowRadius = option.headerBarShadowRadius
+            layer.shadowOpacity = option.headerBarShadowOpacity
+            layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        }
+    }
+
+    func drawUnderline() {
         guard let cell = menu.cellForItem(at: IndexPath(item: 0, section: 0)) as? DugongFloatingTabCollectionViewItem,
               selectedUnderlineView.frame == .zero else {
             return
@@ -89,17 +104,6 @@ class DugongFloatingTab: UIView {
             selectedUnderlineView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             selectedUnderlineView.heightAnchor.constraint(equalToConstant: option.selectedMenuTabItemUnderlineHeight),
         ])
-    }
-    
-    override func layoutSubviews() {
-        if option.headerBarShadow {
-            layer.masksToBounds = false
-            layer.shadowColor = option.headerBarShadowColor.cgColor
-            layer.shadowOffset = option.headerBarShadowOffset
-            layer.shadowRadius = option.headerBarShadowRadius
-            layer.shadowOpacity = option.headerBarShadowOpacity
-            layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        }
     }
 
     func moveSelectedUnderlineView(index: Int, animated: Bool = true) {

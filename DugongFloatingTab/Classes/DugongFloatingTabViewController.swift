@@ -59,7 +59,8 @@ public class DugongFloatingTabViewController: UIViewController {
             guard constraint.firstAttribute == .height else { continue }
             constraint.isActive = false
         }
-        floatingTab.menu.reloadData()
+        floatingTab = DugongFloatingTab(view: headerView, option: option)
+        
         pageView = DugongFloatingTabPageViewController(pages: pages, option: option)
         pageView.view.translatesAutoresizingMaskIntoConstraints = false
         pageView.pageViewDelegate = self

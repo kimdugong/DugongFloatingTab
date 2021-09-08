@@ -62,8 +62,11 @@ class ViewController: UIViewController {
         addChild(floatingTabViewController)
         floatingTabViewController.didMove(toParent: self)
         floatingTabViewController.view.frame = floatingTabViewController.view.superview?.bounds ?? .zero
+    }
 
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 3) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) {
             DispatchQueue.main.async { [self] in
                 fakeFetchTabTitle()
             }
@@ -79,7 +82,6 @@ class ViewController: UIViewController {
             return child
         }
         floatingTabViewController.pages = pages
-        floatingTabViewController.reloadFloatingTabPage()
     }
 }
 

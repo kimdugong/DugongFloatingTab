@@ -43,7 +43,9 @@ extension PageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        option?.headerMaxHeight = CGFloat(100 * indexPath.row)
 //        delegate?.reloadFloatingTabPage()
-        parent?.parent?.parent?.navigationController?.pushViewController(UIViewController(), animated: true)
+        let vc = UIViewController()
+        vc.view.backgroundColor = .white
+        parent?.parent?.parent?.navigationController?.pushViewController(vc, animated: true)
     }
 
     // delegate me for floating tab
