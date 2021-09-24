@@ -191,7 +191,9 @@ extension DugongFloatingTabViewController: UICollectionViewDataSource, UICollect
         cell.config(title: pages[indexPath.row].title, option: option)
         
         if indexPath.item == 0 {
-            cell.isSelected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
+                cell.isSelected = true
+            }
         }
 
         return cell
