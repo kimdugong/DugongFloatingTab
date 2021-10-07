@@ -30,6 +30,8 @@ public final class DugongFloatingTabConfiguration {
     public var headerBarShadowOpacity: Float = 0.3
     public var pageViewControllerSwipePagingDisable = false
     public var menuTabFixedPosition = false
+    /// You may want to adjust scrollView's content inset manually when page is changing (Especially adjusting plain style tableview section header view). Then set to false
+    public var adjustScrollViewContentInset = true
     
 
     /// Set DugongStickyHeader's height. DugongStickyHeader's height would be headerMaxHeight + menuTabHeight

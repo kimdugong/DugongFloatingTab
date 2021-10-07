@@ -66,7 +66,9 @@ class DugongFloatingTabPageViewController: UIPageViewController {
             childVC.delegate = self.parent as? DugongFloatingTabPageScrollDelegate
             if childVC.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + headerViewHeight <= (option.headerMaxHeight + option.menuTabHeight) {
                 childVC.stickyHeaderChildScrollView?.contentOffset.y = -headerViewHeight
-                childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+                if option.adjustScrollViewContentInset {
+                    childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
+                }
             }
         }
     }

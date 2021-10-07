@@ -11,4 +11,6 @@ public protocol DugongFloatingTabViewControllerDelegate: AnyObject {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
     func pageIndexDidChange(index: Int, previous: Int)
+    /// Get current header frame. Returns global coordidate.
+    func getCurrentStickyHeaderGlobalFrame(frame: CGRect)
 }

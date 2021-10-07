@@ -107,12 +107,19 @@ public class DugongFloatingTabViewController: UIViewController {
         childVC.delegate = self
         childVC.stickyHeaderChildScrollView?.contentOffset.y = -(option.headerMaxHeight + option.menuTabHeight)
         childVC.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0)
-
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(contentView)
+    }
+
+    public override func viewDidLayoutSubviews() {
+        let rootView = UIApplication.shared.keyWindow?.rootViewController?.view
+        guard let frame = floatingTab.superview?.convert(floatingTab.frame, to: rootView) else {
+            return
+        }
+        delegate?.getCurrentStickyHeaderGlobalFrame(frame: frame)
     }
 }
 
@@ -167,9 +174,10 @@ extension DugongFloatingTabViewController: DugongFloatingTabPageViewControllerDe
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         pendingViewControllers
+            .filter{ _ in option.adjustScrollViewContentInset }
             .compactMap({ $0 as? DugongFloatingTabPageDelegate })
             .forEach({ $0.stickyHeaderChildScrollView?.contentInset = UIEdgeInsets(top: option.headerMaxHeight + option.menuTabHeight, left: 0, bottom: 0, right: 0) })
-        
+
         pendingViewControllers
             .compactMap({ $0 as? DugongFloatingTabPageDelegate })
             .filter({ $0.stickyHeaderChildScrollView?.contentOffset.y ?? 0 + floatingTab.bounds.height <= (option.headerMaxHeight + option.menuTabHeight) })

@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         option.headerBarShadowRadius = 3
         option.pageViewControllerSwipePagingDisable = false
         option.menuTabFixedPosition = false
+        option.adjustScrollViewContentInset = true
 
         let floatingTabViewController = DugongFloatingTabViewController(pages: pages, headerView: headerView, option: option)
         floatingTabViewController.delegate = self
@@ -86,6 +87,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: DugongFloatingTabViewControllerDelegate {
+    func getCurrentStickyHeaderGlobalFrame(frame: CGRect) {
+        print("current header bound : \(frame)")
+    }
+
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         
     }
